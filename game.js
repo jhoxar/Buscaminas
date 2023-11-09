@@ -2,14 +2,13 @@ console.log(maps)
 
 const canvas = document.querySelector('#game')
 const game = canvas.getContext('2d')
+let canvasSize;
+let elementsSize;
 
-window.addEventListener('load', startGame)
+window.addEventListener('load', setCanvasSize)
+window.addEventListener('resize', setCanvasSize)
 
-
-//inicializamos el Juego
-function startGame(){
-
-    let canvasSize
+function setCanvasSize(){
 
     if(window.innerHeight > window.innerWidth){
         canvasSize = window.innerWidth * 0.8
@@ -20,32 +19,29 @@ function startGame(){
     canvas.setAttribute('width', canvasSize)
     canvas.setAttribute('height', canvasSize)
 
-    const elementsSize = (canvasSize / 10) - 1
+     elementsSize = (canvasSize / 10) - 1 
 
-    game.font = elementsSize + 'px verdana' 
-    game.textAlign = ""
-    
+     startGame()
 
-     for(let i = 0; i<10; i++){
-        game.fillText(emojis['X'], elementsSize * i , elementsSize)
-
-    } 
-
-
-
-    console.log({
-        canvasSize,
-        elementsSize
-    })
-
-    //window.innerHeight =
-    //game.fillRect(0,50,100,100)
-    //game.clearRect(0,0,50,50)
-    //game.clearRect(50,50,50,50)
-
-    //game.font = '25px Verdana'
-    //game.fillStyle = 'purple'
-    //game.textAlign = 'start'
-    //game.fillText('Platzi', 25 , 25)
 }
 
+function startGame(){
+    
+
+    game.font = elementsSize + 'px verdana' 
+    game.textAlign = "end"
+    const map = maps[0]
+    const mapRows = map.trim().split('\n')
+    const mapRowCols = mapRows.map(row => row.trim().split(''))
+    console.log({
+        map,
+        mapRows,
+        mapRowCols
+    })
+    
+     for(let row = 1; row<=10; row++){
+        for(let col = 1; col<=10; col++){
+            game.fillText(emojis[mapRowCols[row - 1][col - 1 ]], elementsSize *col + 15 , elementsSize * row - 5 )
+        }
+    } 
+}
