@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="./style.css">
+    <title>Welcome to the Minesweeper with Lives game</title>
+    <link rel="icon" href="../Buscaminas/Assets/Buscaminaslogo@2x.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <div class="game-container">
+        
+        <canvas id="canvas"></canvas>
+
+        <div class="btns">
+            <button id="up">Up</button>
+            <button id="left">Left</button>
+            <button id="right">Right</button>
+            <button id="down">Down</button>
+        </div>
+
+        <div class="messages">
+            <!-- TODO -->
+            <p>Examples</p>
+        </div>
+    </div>
     
 </body>
+
+<script src="./maps.js"></script>
+<script src="./game.js"></script>
 </html>
