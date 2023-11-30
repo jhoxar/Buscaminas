@@ -16,6 +16,11 @@ const playerPosition = {
     y: undefined 
 }
 
+const giftPosition = {
+    x:undefined,
+    y:undefined
+}
+
 
  
 
@@ -60,6 +65,9 @@ function startGame(){
             playerPosition.x = posX
             playerPosition.y = posY
             }
+        }else if( col == 'I'){
+            giftPosition.x = posX
+            giftPosition.y = posY
         }
 
         
@@ -89,6 +97,18 @@ function startGame(){
 
 
 function movePlayer(){
+    const giftCollisionX = playerPosition.x == giftPosition.x
+    const giftCollisionY = playerPosition.y == giftPosition.y
+    const giftCollision = giftCollisionX && giftCollisionY
+
+    if(giftCollision){
+       alert('Colision fija')
+       
+
+    }
+
+
+
     game.fillText(emojis['PLAYER'], playerPosition.x, playerPosition.y)
    }
 
