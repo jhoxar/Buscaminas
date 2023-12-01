@@ -53,7 +53,7 @@ function startGame(){
     const map = maps[level]
 
     if(!map){
-        alert('you complete the game')
+        gameWin()
         return;
     }
     const mapRows = map.trim().split('\n')
@@ -106,6 +106,10 @@ function startGame(){
     console.log({canvasSize, elementSize})  
     console.log(window.innerHeight)
     console.log(window.innerWidth)
+}
+
+function gameWin(){
+    console.log('!you passed this game!')
 }
 
 
