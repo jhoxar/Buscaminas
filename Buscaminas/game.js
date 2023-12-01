@@ -10,6 +10,7 @@ const btnRight = d.querySelector('#right')
 const btnDown = d.querySelector('#down')
 let canvasSize;
 let elementSize;
+let level = 0
 
 const playerPosition = {
     x: undefined,
@@ -49,7 +50,12 @@ function startGame(){
     game.font = elementSize + 'px Verdana'
     game.textAlign = "start"
 
-    const map = maps[0]
+    const map = maps[level]
+
+    if(!map){
+        alert('you complete the game')
+        return;
+    }
     const mapRows = map.trim().split('\n')
     const mapRowCols = mapRows.map(row => row.trim().split(''))
 
@@ -110,8 +116,7 @@ function movePlayer(){
     const giftCollision = giftCollisionX && giftCollisionY
 
     if(giftCollision){
-       alert('Colision fija')
-       
+       levelWin()
     }
 
     const enemyCollision = enemypositions.find(enemy=>{
@@ -126,6 +131,11 @@ function movePlayer(){
     }
 
     game.fillText(emojis['PLAYER'], playerPosition.x, playerPosition.y)
+   }
+
+   function levelWin(){
+    level++;
+    startGame()
    }
 
 window.addEventListener('keydown', moveByKeys)
