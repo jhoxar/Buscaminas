@@ -21,6 +21,8 @@ const giftPosition = {
     y:undefined
 }
 
+let enemypositions = []
+
 
  
 
@@ -51,6 +53,7 @@ function startGame(){
     const mapRows = map.trim().split('\n')
     const mapRowCols = mapRows.map(row => row.trim().split(''))
 
+    enemypositions = []
     game.clearRect(0,0,canvasSize,canvasSize)
 
     
@@ -68,6 +71,11 @@ function startGame(){
         }else if( col == 'I'){
             giftPosition.x = posX
             giftPosition.y = posY
+        }else if(col == 'X'){
+            enemypositions.push({
+                x: posX,
+                y: posY
+            })
         }
 
         
@@ -104,10 +112,18 @@ function movePlayer(){
     if(giftCollision){
        alert('Colision fija')
        
-
     }
 
+    const enemyCollision = enemypositions.find(enemy=>{
+        const enemyCollisionX = enemy.x == playerPosition.x
+        const enemyCollisionY = enemy.y == playerPosition.y
+        return enemyCollisionX && enemyCollisionY
 
+    })
+
+    if(enemyCollision){
+        alert('You find an enemy :(')
+    }
 
     game.fillText(emojis['PLAYER'], playerPosition.x, playerPosition.y)
    }
