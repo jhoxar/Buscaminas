@@ -11,6 +11,7 @@ const btnDown = d.querySelector('#down')
 let canvasSize;
 let elementSize;
 let level = 0
+let lives = 3;
 
 const playerPosition = {
     x: undefined,
@@ -131,7 +132,8 @@ function movePlayer(){
     })
 
     if(enemyCollision){
-        alert('You find an enemy :(')
+        console.log('Chocaste con un enemigo')
+        levelFail()
     }
 
     game.fillText(emojis['PLAYER'], playerPosition.x, playerPosition.y)
@@ -140,6 +142,22 @@ function movePlayer(){
    function levelWin(){
     level++;
     startGame()
+   }
+
+   function levelFail(){
+    lives--
+
+    if(lives<=0){
+        level =0
+        lives =3
+    }
+
+
+    playerPosition.x = undefined;
+    playerPosition.y= undefined;
+    startGame()
+
+
    }
 
 window.addEventListener('keydown', moveByKeys)
