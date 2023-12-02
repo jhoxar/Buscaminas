@@ -57,6 +57,15 @@ canvas{
     font-weight: 500;
 
 }
+.messages p{
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+
+}
+
+ #lives{
+    font-size: 1.4rem;
+}
 
 @media(max-width:480px){
     .btns{
