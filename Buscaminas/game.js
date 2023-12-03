@@ -9,10 +9,13 @@ const btnLeft = d.querySelector('#left')
 const btnRight = d.querySelector('#right')
 const btnDown = d.querySelector('#down')
 const spanLives = d.querySelector('#lives')
+const spanTime = d.querySelector('#time')
 let canvasSize;
 let elementSize;
 let level = 0
 let lives = 3;
+let timeStart;
+let timeInterval;
 
 const playerPosition = {
     x: undefined,
@@ -41,7 +44,6 @@ function setCanvasSize(){
     canvas.setAttribute('height', canvasSize)
 
     startGame()
-
 }
 
 
@@ -58,6 +60,15 @@ function startGame(){
         gameWin()
         return;
     }
+
+    if(!timeStart){
+        timeStart = Date.now()
+        timeInterval = setInterval(showTime, 100)
+    }
+
+    
+
+
     const mapRows = map.trim().split('\n')
     const mapRowCols = mapRows.map(row => row.trim().split(''))
     showLives()
@@ -71,6 +82,8 @@ function startGame(){
         const emoji = emojis[col]
         const posX = elementSize * colI
         const posY = elementSize *(rowI + 1)
+
+        console.log(rowI)
 
         if(col == 'O'){
             if(!playerPosition.x & !playerPosition.y){
@@ -117,13 +130,20 @@ function showLives(){
     livesArray.forEach(heart => spanLives.append(heart))
 }
 
+function showTime(){
+spanTime.innerHTML = `${(Date.now() - timeStart)/ 1000} s`
+}
+
 function gameWin(){
     console.log('!you passed this game!')
+    clearInterval(timeInterval)
 }
 
 
 
 function movePlayer(){
+
+
     const giftCollisionX = playerPosition.x == giftPosition.x
     const giftCollisionY = playerPosition.y == giftPosition.y
     const giftCollision = giftCollisionX && giftCollisionY
@@ -158,6 +178,7 @@ function movePlayer(){
     if(lives<=0){
         level =0
         lives =3
+        timeStart = undefined;
     }
 
     playerPosition.x = undefined;
@@ -169,6 +190,8 @@ function movePlayer(){
 window.addEventListener('keydown', moveByKeys)
 
 function moveByKeys(e){
+
+    
     if(e.key == 'ArrowUp') moveUp()
     else if(e.key == 'ArrowLeft') moveLeft()
     else if(e.key == 'ArrowRight') moveRight()
