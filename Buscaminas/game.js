@@ -33,6 +33,11 @@ const giftPosition = {
 
 let enemypositions = []
 
+const enemyPos= {
+    x: undefined,
+    y: undefined
+}
+
 function setCanvasSize(){
 
     if(window.innerWidth > window.innerHeight){
@@ -44,6 +49,8 @@ function setCanvasSize(){
 
     canvas.setAttribute('width', canvasSize)
     canvas.setAttribute('height', canvasSize)
+    playerPosition.x = undefined
+    playerPosition.y = undefined
     startGame()
 }
 
@@ -173,10 +180,31 @@ function setRecord(){
 
 function gameWin(){
     console.log('!you passed this game!')
-    clearInterval(timeInterval)
     setRecord()
+    clearInterval(timeInterval)
 }
 
+function enemyCollision(){
+
+    console.log(enemyPos)
+
+     enemypositions.forEach(enemy=>{
+        if(enemy.x == playerPosition.x && enemy.y == playerPosition.y) {
+            enemyPos.x = enemy.x
+            enemyPos.y = enemy.y
+            levelFail()
+        }
+
+    })
+
+    if(enemyPos.x && enemyPos.y){
+         game.fillText(emojis['BOMB_COLLISION'], enemyPos.x , enemyPos.y) 
+         enemyPos.x = undefined
+         enemyPos.y = undefined;
+    }
+
+    
+}
 
 
 function movePlayer(){
@@ -190,19 +218,26 @@ function movePlayer(){
        levelWin()
     }
 
-    const enemyCollision = enemypositions.find(enemy=>{
+    enemyCollision()
+
+    
+
+   /*  const enemyCollision = enemypositions.find(enemy=>{
         const enemyCollisionX = enemy.x == playerPosition.x
         const enemyCollisionY = enemy.y == playerPosition.y
         return enemyCollisionX && enemyCollisionY
+        
 
     })
 
     if(enemyCollision){
         console.log('Chocaste con un enemigo')
         levelFail()
-    }
+    
+    } */
 
     game.fillText(emojis['PLAYER'], playerPosition.x, playerPosition.y)
+    
    }
 
    function levelWin(){
