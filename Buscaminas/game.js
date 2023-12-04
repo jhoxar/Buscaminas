@@ -10,12 +10,16 @@ const btnRight = d.querySelector('#right')
 const btnDown = d.querySelector('#down')
 const spanLives = d.querySelector('#lives')
 const spanTime = d.querySelector('#time')
+const spanRecord = d.querySelector('#record')
+const spanResult = d.querySelector('#result')
 let canvasSize;
 let elementSize;
 let level = 0
 let lives = 3;
+let record = `0 s`
 let timeStart;
 let timeInterval;
+
 
 const playerPosition = {
     x: undefined,
@@ -29,9 +33,6 @@ const giftPosition = {
 
 let enemypositions = []
 
-
- 
-
 function setCanvasSize(){
 
     if(window.innerWidth > window.innerHeight){
@@ -40,9 +41,9 @@ function setCanvasSize(){
         canvasSize = Number((window.innerWidth * 0.7).toFixed(0))
     }
 
+
     canvas.setAttribute('width', canvasSize)
     canvas.setAttribute('height', canvasSize)
-
     startGame()
 }
 
@@ -64,9 +65,8 @@ function startGame(){
     if(!timeStart){
         timeStart = Date.now()
         timeInterval = setInterval(showTime, 100)
+        showRecord()
     }
-
-    
 
 
     const mapRows = map.trim().split('\n')
@@ -130,13 +130,51 @@ function showLives(){
     livesArray.forEach(heart => spanLives.append(heart))
 }
 
+function showRecord(){
+    const isRecordIn = localStorage.getItem('record_time')
+    if(!isRecordIn){
+        spanRecord.innerHTML = record
+        spanResult.innerHTML = '¿Primera vez jugando? ¡Haz lo mejor que puedas! 💪🎮'
+    }else{
+        spanRecord.innerHTML = localStorage.getItem('record_time')
+    }
+    
+   
+}
+
 function showTime(){
-spanTime.innerHTML = `${(Date.now() - timeStart)/ 1000} s`
+     
+    spanTime.innerHTML = `${(Date.now() - timeStart)/ 1000} s`
+}
+
+function setRecord(){
+    const playerTime = `${(Date.now() - timeStart) / 1000}s`;
+    const playerRecord = localStorage.getItem('record_time');
+
+    if(!playerRecord){
+        localStorage.setItem('record_time', playerTime)  
+    }else{
+        if(playerTime < playerRecord){
+            localStorage.setItem('record_time', playerTime)
+            spanResult.innerHTML = '¡Bien hecho! 🎉 ¡Superaste el récord! 🏆'
+        }else{
+            spanResult.innerHTML = 'Lo siento, ¡No superaste el récord! 😔🚫'
+            
+        }
+    }
+
+
+    console.log({
+        playerTime,
+        playerRecord
+
+    })
 }
 
 function gameWin(){
     console.log('!you passed this game!')
     clearInterval(timeInterval)
+    setRecord()
 }
 
 
@@ -179,11 +217,13 @@ function movePlayer(){
         level =0
         lives =3
         timeStart = undefined;
+       
     }
 
     playerPosition.x = undefined;
     playerPosition.y= undefined;
     startGame()
+    
 
    }
 

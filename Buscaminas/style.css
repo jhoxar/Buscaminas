@@ -63,7 +63,7 @@ canvas{
 
 }
 
- #lives, #time{
+ #lives, #time, #record{
     font-size: 1.4rem;
 }
 
