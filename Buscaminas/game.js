@@ -67,6 +67,7 @@ function startGame(){
     if(!map){
         gameWin()
         return;
+        
     }
 
     if(!timeStart){
