@@ -68,91 +68,23 @@ canvas{
 }
 
 .resume{
-    z-index: 2;
     position: absolute;
-    background-color: #292929;
-    border: 1px solid #75B93F;
-    box-shadow: 0 0 10px rgba(117, 185, 63, 0.5);
-    border-radius: 10px;
-    width: 80vw;
-    height: 50vh;
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-template-rows: repeat(3,1fr);
-    gap: 8px;
-    padding: 16px;
+    border: none;
+    box-shadow: none;
+    background-color: rgb(251, 176, 37);
+    border-radius: 12px;
+    padding: 12px;
     
 }
 
-#time--player{
-    grid-column: 1 / 3;
-}
 
 
-#record--time{
-    grid-column: 3 / 5;
-
-}
-
-#lives--player{
-    grid-column: 2 / 4;
-    grid-row: 2 / 3;
-}
-
-#restart--game{
-    grid-column: 1 / 5;
-    grid-row: 3 / 4;
-
-}
-
-#time--player, #record--time,#lives--player,#restart--game{
-    background-color: #1B1B1B;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid rgba(216, 119, 29, 0.8);;
-    box-shadow: 0 0 4px rgba(216, 119, 29, 0.8);
-}
-
-.time--player__hero, .record--time__hero , .lives--player__hero{
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-}
-
-.resume--img {
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-
-.resume__text{
-    align-self: center;
-    justify-self: start;
-    font-size: 1rem;
-    text-align: center;
-    line-height: 12px;
-    letter-spacing: 0.1rem;
-}
-.time--player__img{
-    background-image: url('./Assets/clockGame.png');
-
-}
-
-.record--time__img{
-    background-image: url('./Assets/recordCup.png');
-
-}
-
-.lives--player__img{
-    background-image: url('./Assets/heartGame.png');
-
-}
 
 
 @media(max-width:480px){
+    
+
+    
     .btns{
         display: grid;
         grid-template-columns: repeat(3,1fr);
@@ -195,6 +127,7 @@ canvas{
     }
     
 }
+
 
 
 
