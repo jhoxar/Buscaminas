@@ -19,6 +19,7 @@ let lives = 3;
 let record = `0 s`
 let timeStart;
 let timeInterval;
+let playerTime;
 
 
 const playerPosition = {
@@ -157,7 +158,7 @@ function showTime(){
 }
 
 function setRecord(){
-    const playerTime = `${(Date.now() - timeStart) / 1000}s`;
+    playerTime = `${(Date.now() - timeStart) / 1000}s`;
     const playerRecord = localStorage.getItem('record_time');
 
     if(!playerRecord){
@@ -168,7 +169,6 @@ function setRecord(){
             spanResult.innerHTML = '¡Bien hecho! 🎉 ¡Superaste el récord! 🏆'
         }else{
             spanResult.innerHTML = 'Lo siento, ¡No superaste el récord! 😔🚫'
-            
         }
     }
 
@@ -185,6 +185,10 @@ function gameWin(){
     setRecord()
     clearInterval(timeInterval)
     showResumeModal()
+    startCountdown()
+    
+   
+    
 }
 
 function enemyCollision(){
@@ -256,6 +260,8 @@ function movePlayer(){
         lives =3
         timeStart = undefined;
         showResumeModal() 
+        startCountdown()
+        
     }
 
     playerPosition.x = undefined;
