@@ -5,6 +5,12 @@
     font-size: 62.5%;
 }
 
+.hide{
+    visibility: hidden;
+    display: none;
+}
+
+
 .game-container{
     color: #f2f2f2;
     width: 100vw;
@@ -71,10 +77,8 @@ canvas{
     position: absolute;
     border: none;
     box-shadow: none;
-    
     background-color: #353535;
     box-shadow: 0 2px 6px rgba(255, 176, 46, 0.8);
-    
     border-radius: 12px;
     padding: 16px;
     display: grid;
@@ -82,32 +86,148 @@ canvas{
     gap: 8px;
 }
 
-.resume__time , .resume__record , .resume__lives, .resume__game{
+.resume h2{
+    font-size: 1.1rem;
+    padding-top: 8px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+}
+
+
+
+.resume__time , .resume__record , .resume__lives , .resume__game{
     border-radius: 8px;
     background-color: #2E2E2E;
     box-shadow: 0 0px 4px #73B73D;
     cursor: pointer;
-    
-}
-
-.resume__time{
-    
-}
-
-.resume__record{
-   
-}
-.resume__lives{
-   
+    padding: 8px 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .resume__game{
-    grid-column: 1 / 4;
-    width: 85%;
-    justify-self: center;
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+
+}
+
+.resume__game--question{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resume__game--question span:nth-child(1) , .resume__game--question span:nth-child(3){
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+
+.resume__game--question span:nth-child(1){
+    background-image: url('./Assets/triangleGame.svg');
+  
+
+}
+
+.resume__game--question p:nth-child(2){
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    margin-left: 8px;
+    margin-right: 8px;
     
 }
 
+.resume__game--question span:nth-child(3){
+    background-image: url('./Assets/triangleGame.svg');
+    transform: rotate(-180deg);
+    
+}
+
+
+
+.resume__time p:nth-child(3) , .resume__record p:nth-child(3), .resume__lives p:nth-child(3){
+    display: none;
+    visibility: hidden;
+}
+
+.resume__time p:nth-child(4) , .resume__record p:nth-child(4), .resume__lives p:nth-child(4){
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.resume__icon{
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    align-self: center; 
+}
+
+.resume__time--icon{
+    background-image: url('./Assets/clockGame.png');
+}
+
+.resume__record--icon{
+    background-image: url('./Assets/recordCup.png');
+}
+
+.resume__lives--icon{
+    background-image: url('./Assets/heartGame.png');
+}
+
+
+.resume__game{
+    grid-column: 1 / 4;
+    
+}
+
+.resume__game--timer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resume__game--timer p:nth-child(1){
+    display: none;
+    visibility: hidden;
+}
+
+.resume__game--timer p:nth-child(2){
+    font-size: 1.3rem;
+    letter-spacing: 0.2rem;
+}
+
+.resume__game--action{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.resume__game--action button{
+    padding: 2px 10px;
+    font-size: 1rem;
+    background-color: transparent;
+    border: none;
+    color: #f2f2f2;
+    letter-spacing: 0.1rem;
+    border: 1px solid rgba(255, 176, 46, 0.8);
+    box-shadow: 1px 1px 4px rgba(255, 176, 46, 0.8);
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
 
 
 
@@ -158,16 +278,51 @@ canvas{
 }
 
 @media(max-width:550px){
-    .resume__time{
+     .resume__time{
         grid-column: 1 / 3;
-
     }
 
-    .resume__game{
-        width: 100%;
+    .resume__game{ 
         grid-column: 2 / 4;
+    } 
+}
 
+@media(min-width:550px){
+
+    .resume__time , .resume__record , .resume__lives , .resume__game{
+        padding: 8px 12px;
     }
+
+    .resume__time p:nth-child(4) , .resume__record p:nth-child(4), .resume__lives p:nth-child(4){
+        font-size: 0.9rem;
+    }
+
+    .resume__time p:nth-child(3) , .resume__record p:nth-child(3), .resume__lives p:nth-child(3){
+        display: block;
+        visibility: visible;
+        text-align: justify;
+        font-size: 1rem;
+        padding-bottom: 16px;
+    }
+    
+    .resume__game--timer p:nth-child(1){
+        display: block;
+        visibility: visible;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .resume__game--action button{
+        padding: 2px 14px;
+        font-size: 1.1rem;
+    }
+
+    .resume__game--timer{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        place-items: center;
+    }
+
 }
 
 

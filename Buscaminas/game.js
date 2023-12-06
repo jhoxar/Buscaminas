@@ -46,7 +46,6 @@ function setCanvasSize(){
         canvasSize = Number((window.innerWidth * 0.7).toFixed(0))
     }
 
-
     canvas.setAttribute('width', canvasSize)
     canvas.setAttribute('height', canvasSize)
     playerPosition.x = undefined
@@ -113,6 +112,8 @@ function startGame(){
         
     })
    })
+
+
 
    movePlayer()
 
@@ -183,6 +184,7 @@ function gameWin(){
     console.log('!you passed this game!')
     setRecord()
     clearInterval(timeInterval)
+    showResumeModal()
 }
 
 function enemyCollision(){
@@ -253,12 +255,13 @@ function movePlayer(){
         level =0
         lives =3
         timeStart = undefined;
-       
+        showResumeModal() 
     }
 
     playerPosition.x = undefined;
     playerPosition.y= undefined;
     startGame()
+    
     
 
    }

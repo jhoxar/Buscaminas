@@ -33,19 +33,40 @@
             
         </div>
 
-        <div class="resume">
-
-            
-            <article class="resume__time"></article>
-            <article class="resume__record"></article>
-            <article class="resume__lives"></article>
-            <article class="resume__game"></article>
-           
-
-            
-            
-            
-            
+        <div class="resume hide" >
+            <article class="resume__time">
+                <span class="resume__icon resume__time--icon"></span>
+                <h2>Time</h2>
+                <p>You were able to successfully complete the game. Now, the journey doesn't end here. Keep playing to refine your strategies, enhance your skills, and unlock new challenges.</p>
+                <p>your time playing was <span id="timePlayer"></span></p>
+            </article>
+            <article class="resume__record">
+                <span class="resume__icon resume__record--icon"></span>
+                <h2>Record</h2>
+                <p>every game is an opportunity to learn and grow. Reflect on your strategies.</p>
+                <p>Your previous record was <span id="previousRecord"></span></p>
+            </article>
+            <article class="resume__lives">
+                <span class="resume__icon resume__lives--icon"></span>
+                <h2>Lives</h2>
+                <p>You were able to keep your lives intact, showcasing your excellent skills in navigating this game.</p>
+                <p>You lost <span id="livesLost"></span></p>
+            </article>
+            <article class="resume__game">
+                <div class="resume__game--question">
+                    <span></span>
+                    <p>¿Continue?</p>
+                    <span></span>
+                </div>
+                <div class="resume__game--timer">
+                    <p>Keep playing to improve your score and become a superStart</p>
+                    <p id="gameTimer">10S</p>
+                </div>
+                <div class="resume__game--action">
+                    <button>Yes</button>
+                    <button>No</button>
+                </div>
+            </article>
         </div>
 
         
