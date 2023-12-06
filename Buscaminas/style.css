@@ -71,9 +71,12 @@ canvas{
     position: absolute;
     border: none;
     box-shadow: none;
-    background-color: rgb(251, 176, 37);
+    
+    background-color: #353535;
+    box-shadow: 0 2px 6px rgba(255, 176, 46, 0.8);
+    
     border-radius: 12px;
-    padding: 12px;
+    padding: 16px;
     display: grid;
     grid-template-columns: repeat(3 , 1fr);  
     gap: 8px;
@@ -81,24 +84,28 @@ canvas{
 
 .resume__time , .resume__record , .resume__lives, .resume__game{
     border-radius: 8px;
+    background-color: #2E2E2E;
+    box-shadow: 0 0px 4px #73B73D;
+    cursor: pointer;
+    
 }
 
 .resume__time{
-    background-color: green;
+    
 }
 
 .resume__record{
-    background: yellow;
+   
 }
 .resume__lives{
-    background: red;
+   
 }
 
 .resume__game{
     grid-column: 1 / 4;
     width: 85%;
     justify-self: center;
-    background-color: wheat;
+    
 }
 
 
