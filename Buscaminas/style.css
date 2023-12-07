@@ -73,6 +73,10 @@ canvas{
     font-size: 1.4rem;
 }
 
+#timePlayer{
+    font-size: 1rem;
+}   
+
 .resume{
     position: absolute;
     border: none;
@@ -293,26 +297,41 @@ canvas{
 
 @media(min-width:550px){
 
+    .resume h2{
+        font-size: 1.4rem;
+        letter-spacing: 0.2rem;
+    }
+
     .resume__time , .resume__record , .resume__lives , .resume__game{
         padding: 8px 12px;
     }
 
-    .resume__time p:nth-child(4) , .resume__record p:nth-child(4), .resume__lives p:nth-child(4){
-        font-size: 0.9rem;
+    .resume__time p:nth-child(4) , .resume__record p:nth-child(4), .resume__lives p:nth-child(4), #previousRecord, #timePlayer{
+        font-size: 1.1rem;
     }
 
     .resume__time p:nth-child(3) , .resume__record p:nth-child(3), .resume__lives p:nth-child(3){
         display: block;
         visibility: visible;
         text-align: justify;
-        font-size: 1rem;
+        font-size: 1.3rem;
         padding-bottom: 16px;
     }
+
+    .resume__game--question p:nth-child(2){
+        font-size: 1.3rem;
+    }
+
+    #timerCount{
+        font-size: 1.4rem;
+    }
+
+    
     
     .resume__game--timer p:nth-child(1){
         display: block;
         visibility: visible;
-        font-size: 1rem;
+        font-size: 1.3rem;
         text-align: center;
     }
 

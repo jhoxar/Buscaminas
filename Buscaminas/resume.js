@@ -2,10 +2,14 @@ const resume = d.querySelector('.resume')
 const btnYes = d.querySelector('#resumeGame')
 const btnNo = d.querySelector('#noResumeGame')
 const previousRecord = d.querySelector('#previousRecord')
+const timePlayer = d.querySelector('#timePlayer')
+const livesResult = d.querySelector('#livesResult')
 previousRecord.innerHTML = localStorage.getItem('record_time')
 let interval;
 let resumeSize;
 console.log(resumeSize);
+
+
 
 
 
@@ -18,6 +22,7 @@ btnNo.addEventListener('click', ()=> clearInterval(interval))
 function showResumeModal(){
     resume.classList.remove('hide')
     resume.classList.add('resume')
+    timePlayer.innerHTML = spanTime.textContent
 }
 
 function hideResumeModal(){

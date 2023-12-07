@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="timer__content">
+    <p id="time"></p>
+    <button id="stopTime">Stop</button>
+    </div>
+    
+</body>
+
+<script>
+    const d = document
+    const pResult = d.querySelector('#time')
+    const btnStop = d.querySelector('#stopTime')
+    const timerContainer = d.querySelector('.timer__content')
+    let timeStart;
+    let timeInterval;
+  
+
+    btnStop.addEventListener('click', stopTime)
+
+    if(!timeStart){
+        timeStart = Date.now()
+        timeInterval = setInterval( showTime, 100)
+    }
+
+    function showTime(){
+        pResult.innerHTML = `${(Date.now() - timeStart) / 1000} S`
+    }
+
+    function stopTime(){
+     const stopInterval =  clearInterval(timeInterval)
+     const divTime = d.createElement('p')
+     divTime.innerHTML = `Time pass : ${pResult.textContent}`
+     timerContainer.appendChild(divTime)
+     
+    
+    }
+        
+    
+
+    
+</script>
+</html>

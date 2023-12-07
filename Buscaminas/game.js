@@ -180,14 +180,18 @@ function setRecord(){
     })
 }
 
+function stopTime(){
+    const timeStop = clearInterval(timeInterval)
+    return timeStop;
+}
+
 function gameWin(){
     console.log('!you passed this game!')
     setRecord()
-    clearInterval(timeInterval)
+    stopTime()
     showResumeModal()
+    livesResult.innerHTML = 'You were able to keep your lives intact, showcasing your excellent skills in navigating this game.'
     startCountdown()
-    
-   
     
 }
 
@@ -258,18 +262,17 @@ function movePlayer(){
     if(lives<=0){
         level =0
         lives =3
-        timeStart = undefined;
+        //timeStart = undefined;
+        stopTime()
         showResumeModal() 
-        startCountdown()
-        
+        livesResult.innerHTML = 'Your performance in navigating this game was subpar, resulting in the loss of your lives.'
+        startCountdown()  
     }
 
     playerPosition.x = undefined;
     playerPosition.y= undefined;
     startGame()
     
-    
-
    }
 
 window.addEventListener('keydown', moveByKeys)
